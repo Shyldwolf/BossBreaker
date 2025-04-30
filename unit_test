@@ -1,0 +1,39 @@
+import unittest
+from dps_calc import calculate_tower_damage, calculate_dps_needed
+
+class TestDpsCalc(unittest.TestCase):
+
+    def test_calculate_tower_damage(self):
+        # Test with valid inputs
+        result = calculate_tower_damage(10, 0.5, 5)
+        self.assertAlmostEqual(result['dps_per_tower'], 20.0)
+        self.assertAlmostEqual(result['total_dps'], 100.0)
+
+        # Test with edge case: 1 tower
+        result = calculate_tower_damage(15, 1, 1)
+        self.assertAlmostEqual(result['dps_per_tower'], 15.0)
+        self.assertAlmostEqual(result['total_dps'], 15.0)
+
+        # Test with invalid inputs (negative damage)
+        with self.assertRaises(ValueError):
+            calculate_tower_damage(-10, 0.5, 5)
+
+    def test_calculate_dps_needed(self):
+        # Test with valid inputs
+        dps_needed = calculate_dps_needed(9800, 5, 40)
+        self.assertAlmostEqual(dps_needed, 49.0)
+
+        # Test with edge case: 1 tower
+        dps_needed = calculate_dps_needed(700, 1, 10)
+        self.assertAlmostEqual(dps_needed, 70.0)
+        
+        # Test with invalid inputs (zero towers)
+        with self.assertRaises(ValueError):
+            calculate_dps_needed(100, -1, 10)
+
+        # Test with invalid inputs (negative towers)
+        with self.assertRaises(ValueError):
+            calculate_dps_needed(1400, -1, 3)
+
+if __name__ == "__main__":
+    unittest.main()
