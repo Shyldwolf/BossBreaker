@@ -17,8 +17,8 @@ def main():
             towers = int(input("Ingrese el número de torres: "))
             
             result = calculate_tower_damage(damage, attack_speed, towers)
-            print(f"\nDPS por torre: {result['dps_per_tower']}")
-            print(f"DPS total: {result['total_dps']}")
+            print(f"\nDPS por torre: {result['dps_per_tower']:.2f}")
+            print(f"DPS total: {result['total_dps']:.2f}")
         except ValueError as e:
             print(f"Error: {e}")
 
