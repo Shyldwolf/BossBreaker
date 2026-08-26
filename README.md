@@ -18,8 +18,23 @@
 ---
 
 ## 📦 Installation
-Clone the repo:
+Clone the repo (no external dependencies — standard library only):
 
 ```bash
 git clone https://github.com/Shyldwolf/BossBreaker.git
 cd BossBreaker
+```
+
+---
+
+## ▶️ Run
+
+```bash
+python main.py
+```
+
+## 🧪 Tests
+
+```bash
+python -m unittest unit_test
+```
